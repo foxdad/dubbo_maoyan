@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+option go_package = "./;api";
+
+
+
+message EventRequest {
+  uint32 event_status = 1;
+}
+
+message EventResponse {
+  int32  event_id = 1;
+  string event_name = 2;
+  string event_img = 3;
+  uint32 event_type = 4;
+  uint32 event_status = 5;
+}
+
+message EventListResponse {
+  repeated EventResponse event_response = 1;
+}
+
+service Event {
+  rpc SendEvent (EventRequest) returns (EventListResponse){}
+}

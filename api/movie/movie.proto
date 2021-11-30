@@ -1,0 +1,23 @@
+syntax = "proto3";
+
+option go_package = "./;api";
+
+message MovieResponse {
+  int32 movie_id = 1;
+  string movie_name = 2;
+  string movie_img = 3;
+}
+
+message MovieRequest {
+  int32 page_num = 1;
+  int32 page_size = 2;
+  int32 status = 3;
+}
+
+message MovieResponseList{
+  repeated MovieResponse movie_response = 1;
+}
+
+service Movie {
+  rpc GetMovieList(MovieRequest) returns (MovieResponseList){}
+}

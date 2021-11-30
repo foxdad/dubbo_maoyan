@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package dubbo.CinemaServiceProvider;
+option go_package  = "./;api";
+
+//返回影院数据
+message CinemaResponse {
+  string cinema_id = 1;
+  string cinema_name = 2;
+  string remark = 3;
+}
+// 返回影院集合
+message CinemaListResponse {
+  repeated CinemaResponse cinema_response = 1;
+}
+//根据影院ID请求
+message CinemaRequest{
+  string cinema_id = 1;
+}
+//根据地域请求该地域下的影院
+message RegionRequest{
+  int32 city_id = 1;
+  int32 county_id = 2;
+  string type = 3;
+  float lat = 4;
+  float lon = 5;
+  int32 page_num = 6;
+  int32 page_size = 7;
+
+}
+
+service Cinema{
+  rpc GetCinemaList(RegionRequest) returns (CinemaListResponse){}
+}

@@ -1,5 +1,5 @@
 //module dubbo_maoyan
-module gitee.com/foxmother/dubbo_maoyan
+module github.com/foxdad/dubbo_maoyan
 
 go 1.16
 
